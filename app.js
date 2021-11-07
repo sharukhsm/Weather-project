@@ -6,8 +6,11 @@ const https = require("https");
 const app = express();
 
 app.get("/", function (req, res) {
-  const url =
-    "https://api.openweathermap.org/data/2.5/weather?q=COIMBATORE&appid=222c23ee23b5fbd62ddd956bee556952&units=metric";
+  const query = "Coimbatore";
+  // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+  const unit = "metric";
+  //First try running without react and check if api call works. If it doesn't work, Install react torg make this app work, cuz we added .env, which only works on react.
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=222c23ee23b5fbd62ddd956bee556952&units=${unit}`;
   https.get(url, function (response) {
     console.log(response.statusCode);
 
